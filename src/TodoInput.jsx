@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { OutlinedInput, Button, Box } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { addTodo } from "./TodoState";
 
-const TodoInput = ({ addNewTodo }) => {
+const TodoInput = () => {
+  const dispatch = useDispatch();
   const [newTodo, setNewTodo] = useState("");
 
   const handleAdd = () => {
     if (newTodo.trim()) {
-      addNewTodo(newTodo);
+      dispatch(addTodo(newTodo));
       setNewTodo("");
     }
   };
