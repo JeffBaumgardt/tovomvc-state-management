@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { OutlinedInput, Button, Box } from "@mui/material";
+import { useTodoStore } from "./TodoState";
 
-const TodoInput = ({ addNewTodo }) => {
+const TodoInput = () => {
+  const addTodo = useTodoStore((state) => state.addTodo);
   const [newTodo, setNewTodo] = useState("");
 
   const handleAdd = () => {
     if (newTodo.trim()) {
-      addNewTodo(newTodo);
+      addTodo(newTodo);
       setNewTodo("");
     }
   };
