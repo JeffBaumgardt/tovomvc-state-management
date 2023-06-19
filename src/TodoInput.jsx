@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import { OutlinedInput, Button, Box } from "@mui/material";
+import { todoState } from "./TodoState";
+import { useSetRecoilState } from "recoil";
 
-const TodoInput = ({ addNewTodo }) => {
+const TodoInput = () => {
+  const setTodos = useSetRecoilState(todoState);
+
   const [newTodo, setNewTodo] = useState("");
 
   const handleAdd = () => {
     if (newTodo.trim()) {
-      addNewTodo(newTodo);
+      setTodos((prev) => [
+        ...prev,
+        { id: Date.now(), text: newTodo, completed: false },
+      ]);
       setNewTodo("");
     }
   };
