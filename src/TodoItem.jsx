@@ -1,8 +1,10 @@
 import React from "react";
 import { ListItem, Checkbox, Button, Box, Typography } from "@mui/material";
 import { Delete } from "@mui/icons-material";
+import { useTodo } from "./TodoContext";
 
-const TodoItem = ({ todo, onChange, onDelete }) => {
+const TodoItem = ({ todo }) => {
+  const { removeTodo, toggleTodo } = useTodo();
   return (
     <ListItem
       sx={{
@@ -13,10 +15,13 @@ const TodoItem = ({ todo, onChange, onDelete }) => {
       }}
     >
       <Box sx={{ flex: 1, display: "flex" }}>
-        <Checkbox checked={todo.complete} onChange={() => onChange(todo.id)} />
+        <Checkbox
+          checked={todo.complete}
+          onChange={() => toggleTodo(todo.id)}
+        />
         <Typography sx={{ lineHeight: "42px" }}>{todo.text}</Typography>
       </Box>
-      <Button startIcon={<Delete />} onClick={() => onDelete(todo.id)}>
+      <Button startIcon={<Delete />} onClick={() => removeTodo(todo.id)}>
         Remove
       </Button>
     </ListItem>

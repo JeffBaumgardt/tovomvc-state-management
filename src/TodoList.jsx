@@ -1,17 +1,14 @@
 import React from "react";
 import { List } from "@mui/material";
+import { useTodo } from "./TodoContext";
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos, onDelete, onChange }) => {
+const TodoList = () => {
+  const { todos } = useTodo();
   return (
     <List>
       {todos.map((todo) => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          onDelete={onDelete}
-          onChange={onChange}
-        />
+        <TodoItem key={todo.id} todo={todo} />
       ))}
     </List>
   );
