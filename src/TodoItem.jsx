@@ -12,6 +12,7 @@ const TodoItem = ({ todo }) => {
         display: "flex",
         border: "1px solid rgba(0, 0, 0, 0.23)",
         borderRadius: "4px",
+        mb: 1,
       }}
     >
       <Box sx={{ flex: 1, display: "flex" }}>
